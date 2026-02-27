@@ -55,7 +55,7 @@ public class FoodController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/update/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Food> deleteFood(@PathVariable Long id){
         Optional<Food> deleted_food = foodService.deleteFood(id);
 
@@ -64,6 +64,8 @@ public class FoodController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    
 
 
     

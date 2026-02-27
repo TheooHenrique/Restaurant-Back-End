@@ -29,13 +29,9 @@ public class FoodService {
     }
 
     public Optional<Food> updateFood(Long id, Food food){
-        return foodRepository.findById(id)
-            .map(existingFood -> {
-                existingFood.setTitle(food.getTitle());
-                existingFood.setPrice(food.getPrice());
-                existingFood.setImage(food.getImage());
-                return foodRepository.save(existingFood);
-            });
+        Optional<Food> food_to_be_updated = foodRepository.findById(id);
+        food_to_be_updated.ifPresent(foodRepository.save(food));
+        return food_to_be_updated;
     }
 
     public Optional<Food> deleteFood(Long id){
